@@ -1,26 +1,33 @@
-function open_app(name)
-    return function()
-        hs.application.launchOrFocus(name)
-        if name == 'Finder' then
-            hs.appfinder.appFromName(name):activate()
-        end
-    end
+function launchOrFocus(app)
+  return function()
+    hs.application.launchOrFocus(app)
+  end
 end
 
---- quick open applications
-hs.hotkey.bind({"cmd", "ctrl"}, "T", open_app("Alacritty"))
-hs.hotkey.bind({"cmd", "ctrl"}, "F", open_app("Finder"))
-hs.hotkey.bind({"cmd", "ctrl"}, "S", open_app("Sublime Text.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "M", open_app("Messages.app"))
+local bindings = {
+  [{ "cmd", "ctrl" }] = {
+    t = launchOrFocus("Alacritty"),
+    f = launchOrFocus("Finder"),
+    s = launchOrFocus("Sublime Text"),
+    m = launchOrFocus("Messages"),
+    r = launchOrFocus("Reminders"),
+    e = launchOrFocus("Mail"),
+    b = launchOrFocus("Chromium"),
+    a = launchOrFocus("Activity Monitor"),
+    c = launchOrFocus("Pixie"),
+  },
+}
+for modifier, keyActions in pairs(bindings) do
+  for key, action in pairs(keyActions) do
+    hs.hotkey.bind(modifier, tostring(key), action)
+  end
+end
 
-hs.hotkey.bind({"cmd", "ctrl"}, "R", open_app("Reminders.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "E", open_app("Mail.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "I", open_app("ObjCppApp.app"))
--- hs.hotkey.bind({"cmd", "ctrl"}, "U", open_app("window-thumbnails.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "B", open_app("Chromium.app"))
--- hs.hotkey.bind({"cmd", "ctrl"}, "L", open_app("Lapce.app"))
--- hs.hotkey.bind({"cmd", "ctrl"}, "Z", open_app("Zed.app"))
--- hs.hotkey.bind({"cmd", "ctrl"}, "T", open_app("Warp.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "C", open_app("Pixie.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "D", open_app("Quartz Debug.app"))
-hs.hotkey.bind({"cmd", "ctrl"}, "A", open_app("Activity Monitor.app"))
+function reloadConfig(files)
+  for _, file in pairs(files) do
+    if file:sub(-4) == ".lua" then
+      hs.reload()
+    end
+  end
+end
+hs.pathwatcher.new(os.getenv("HOME") .. "/.config/hammerspoon/", reloadConfig):start()
