@@ -1,0 +1,159 @@
+IMAPAccount personal
+Host imap.gmail.com
+TLSType IMAPS
+User jasonerichan@gmail.com
+PassCmd "pass email/personal"
+AuthMechs PLAIN  # https://sourceforge.net/p/isync/bugs/52/
+
+IMAPStore personal-remote
+Account personal
+
+MaildirStore personal-local
+# The trailing "/" is important
+Path ~/maildir/personal/
+Inbox ~/maildir/personal/INBOX
+SubFolders Verbatim
+
+Channel personal
+Far :personal-remote:
+Near :personal-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Trash"
+Create Near
+Sync Pull
+SyncState *
+
+
+
+IMAPAccount vassar
+Host imap.gmail.com
+TLSType IMAPS
+User jjhan@vassar.edu
+PassCmd "~/experiments/email/mutt_oauth2/vassar/mutt_oauth2.py ~/experiments/email/mutt_oauth2/vassar/jjhan@vassar.edu.tokens"
+AuthMechs XOAUTH2
+
+IMAPStore vassar-remote
+Account vassar
+
+MaildirStore vassar-local
+# The trailing "/" is important
+Path ~/maildir/vassar/
+Inbox ~/maildir/vassar/INBOX
+SubFolders Verbatim
+
+Channel vassar
+Far :vassar-remote:
+Near :vassar-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Trash"
+Create Near
+Sync Pull
+SyncState *
+
+
+
+IMAPAccount vassar-alum
+Host imap.gmail.com
+TLSType IMAPS
+User jjhan@alum.vassar.edu
+PassCmd "~/experiments/email/mutt_oauth2/vassar-alum/mutt_oauth2.py ~/experiments/email/mutt_oauth2/vassar-alum/jjhan@alum.vassar.edu.tokens"
+AuthMechs XOAUTH2
+
+IMAPStore vassar-alum-remote
+Account vassar-alum
+
+MaildirStore vassar-alum-local
+# The trailing "/" is important
+Path ~/maildir/vassar-alum/
+Inbox ~/maildir/vassar-alum/INBOX
+SubFolders Verbatim
+
+Channel vassar-alum
+Far :vassar-alum-remote:
+Near :vassar-alum-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Trash"
+Create Near
+Sync Pull
+SyncState *
+
+
+
+IMAPAccount icloud
+Host imap.mail.me.com
+TLSType IMAPS
+User jasonerichan@icloud.com
+PassCmd "pass email/icloud"
+AuthMechs PLAIN  # https://sourceforge.net/p/isync/bugs/52/
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+# The trailing "/" is important
+Path ~/maildir/icloud/
+Inbox ~/maildir/icloud/INBOX
+SubFolders Verbatim
+
+Channel icloud
+Far :icloud-remote:
+Near :icloud-local:
+Create Near
+Sync Pull
+SyncState *
+
+
+
+IMAPAccount mail-experiment
+Host imap.gmail.com
+TLSType IMAPS
+User jasonmailexperiment@gmail.com
+PassCmd "~/experiments/email/mutt_oauth2/mail-experiment/mutt_oauth2.py ~/experiments/email/mutt_oauth2/mail-experiment/jasonmailexperiment@gmail.com.tokens"
+AuthMechs XOAUTH2
+
+IMAPStore mail-experiment-remote
+Account mail-experiment
+
+MaildirStore mail-experiment-local
+# The trailing "/" is important
+Path ~/maildir/mail-experiment/
+Inbox ~/maildir/mail-experiment/INBOX
+SubFolders Verbatim
+
+Channel mail-experiment
+Far :mail-experiment-remote:
+Near :mail-experiment-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+Sync All
+Create Both
+Remove Both
+Expunge Both
+SyncState *
+
+
+
+IMAPAccount professional
+Host imap.gmail.com
+TLSType IMAPS
+User jasonhanvassar@gmail.com
+PassCmd "~/experiments/email/mutt_oauth2/professional/mutt_oauth2.py ~/experiments/email/mutt_oauth2/professional/jasonhanvassar@gmail.com.tokens"
+AuthMechs XOAUTH2
+
+IMAPStore professional-remote
+Account professional
+
+MaildirStore professional-local
+# The trailing "/" is important
+Path ~/maildir/professional/
+Inbox ~/maildir/professional/INBOX
+SubFolders Verbatim
+
+Channel professional
+Far :professional-remote:
+Near :professional-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+Sync All
+Create Both
+Remove Both
+Expunge Both
+SyncState *

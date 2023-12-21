@@ -1,0 +1,26 @@
+[keyboard]
+bindings = [
+  { key = "Back", mods = "Super", chars = "\u0015" },
+  { key = "Z", mods = "Super", chars = "\u001F" },
+  { key = "Left", mods = "Alt", chars = "\u001Bb" },
+  { key = "Right", mods = "Alt", chars = "\u001Bf" },
+  { key = "Left", mods = "Super", chars = "\u001BOH" },
+  { key = "Right", mods = "Super", chars = "\u001BOF" },
+  { key = "V", mods = "Shift|Super", action = "ToggleViMode" },
+
+  # Linux
+  # { key = "W", mods = "Super", action = "Quit" },
+  # { key = "Q", mods = "Super", action = "Quit" },
+  # { key = "C", mods = "Super", action = "Copy" },
+  # { key = "V", mods = "Super", action = "Paste" },
+  # { key = "F", mods = "Super", mode = "~Search", action = "SearchForward" },
+  # { key = "B", mods = "Super", mode = "~Search", action = "SearchBackward" },
+  # { key = "0", mods = "Super", action = "ResetFontSize" },
+  # { key = "=", mods = "Super", action = "IncreaseFontSize" },
+  # { key = "-", mods = "Super", action = "DecreaseFontSize" },
+
+  # macOS
+  { key = "Comma", mods = "Super", command = { args = ["-c", "open -t ~/.config/zsh/.zshrc"], program = "sh" } },
+  { key = "Comma", mods = "Shift|Super", command = { args = ["-c", "open -t ~/.config/alacritty/alacritty.toml"], program = "sh" } },
+  { key = "Comma", mods = "Alt|Super", command = { args = ["-c", "open -t ~/.profile"], program = "sh" } },
+]

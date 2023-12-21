@@ -1,0 +1,76 @@
+# ==================
+# XDG Base Directory
+# ==================
+
+# https://wiki.archlinux.org/title/XDG_Base_Directory
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_STATE_HOME="$HOME"/.local/state
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export HELIX_RUNTIME="$XDG_DATA_HOME"/helix/runtime
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export NODE_REPL_HISTORY="$XDG_DATA_HOME"/node_repl_history
+export GOPATH="$XDG_DATA_HOME"/go
+export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
+export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+
+export HOMEBREW_CASK_OPTS='--no-quarantine'
+
+HOMEBREW_PREFIX=/opt/homebrew
+
+PATH=~/.local/bin:"$PATH" # warning: overrides defaults
+
+PATH="$HOMEBREW_PREFIX/opt/python@3.11/bin:$PATH"         # overwrite macOS python3
+PATH="$PATH:$HOMEBREW_PREFIX/opt/python@3.11/libexec/bin" # unversioned
+
+export CPLUS_INCLUDE_PATH=~/vassar/current/the-grind/competitive-programming
+
+PATH="$PATH:/Applications/AllegroCL64express.app/Contents/Resources"
+
+PATH="$PATH":~/experiments/code-formatters/styler
+
+PATH="$PATH:$CARGO_HOME/bin"
+
+# https://gitlab.com/muttmua/mutt/-/blob/master/contrib/mutt_oauth2.py.README
+export GPG_TTY=$(tty)
+
+# PATH="$HOMEBREW_PATH/opt/libtool/libexec/gnubin:$PATH"
+
+PATH="$PATH":"$GOPATH"/bin
+
+PATH="$HOMEBREW_PREFIX/bin:$PATH" # warning: overrides defaults
+
+# PATH="$HOMEBREW_PREFIX/opt/libtool/libexec/gnubin:$PATH" # warning: overrides defaults
+
+source "$CARGO_HOME/env"
+
+export NVM_SYMLINK_CURRENT=true
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+PATH="$NVM_DIR/current/bin:$PATH" # warning: overrides defaults
+
+PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+PATH="$PATH:/Applications/Alacritty.app/Contents/MacOS"
+PATH="$PATH:/Applications/IINA.app/Contents/MacOS"
+
+export PATH="$PATH":~/experiments/chromium/depot_tools
+
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.19.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.8.jdk/Contents/Home
+
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+
+# Qt5
+export Qt5_DIR="/opt/homebrew/opt/qt@5/lib/cmake/Qt5"
+
+# Ruby
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+chruby ruby-3.2.2

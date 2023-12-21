@@ -1,0 +1,14 @@
+# rules: http://www.rdrop.com/docs/mutt/manual83.html
+
+# prevent race condition (file deleted before viewed):
+# https://unix.stackexchange.com/a/445566/384673
+
+# text/html; "/Applications/Chromium.app/Contents/MacOS/Chromium" %s; \
+# nametemplate=%s.html; copiousoutput
+
+text/html; open %s; nametemplate=%s.html; copiousoutput
+
+application/pdf; open %s; copiousoutput
+image/jpg; open %s; nametemplate=%s.jpg; copiousoutput
+image/jpeg; open %s; nametemplate=%s.jpeg; copiousoutput
+image/png; open %s; nametemplate=%s.png; copiousoutput

@@ -1,0 +1,21 @@
+[colors.normal]
+black = "#000000"
+blue = "#6699cc"
+cyan = "#5fb4b4"
+green = "#99c794"
+magenta = "#c695c6"
+red = "#ec5f66"
+white = "#ffffff"
+yellow = "#fac761"
+
+[colors.primary]
+background = "#303841"
+foreground = "#d8dee9"
+
+[colors.cursor]
+cursor = "#f9ae58"
+text = "#596673"
+
+[colors.search.focused_match]
+background = "#fac761"
+foreground = "#333333"

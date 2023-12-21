@@ -1,0 +1,8 @@
+# https://www.gnu.org/software/bash/manual/html_node/Readline-Init-File.html
+set enable-bracketed-paste off
+set blink-matching-paren off
+set show-all-if-ambiguous on
+set colored-stats on
+
+# Cool stuff to possibly add:
+# https://www.gnu.org/software/bash/manual/html_node/Sample-Init-File.html

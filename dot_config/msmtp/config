@@ -1,0 +1,16 @@
+defaults
+auth           on
+tls            on
+tls_trust_file /usr/local/etc/openssl/cert.pem
+
+# mail-experiment
+account        mail-experiment
+host           smtp.gmail.com
+port           587
+from           jasonmailexperiment@gmail.com
+user           jasonmailexperiment
+auth           oauthbearer
+passwordeval   ~/experiments/email/mutt_oauth2/mail-experiment/mutt_oauth2.py ~/experiments/email/mutt_oauth2/mail-experiment/jasonmailexperiment@gmail.com.tokens
+
+
+account default : mail-experiment

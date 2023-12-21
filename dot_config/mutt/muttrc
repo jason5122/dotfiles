@@ -1,0 +1,71 @@
+# General Settings
+set sort = reverse-threads
+set sort_aux = date-received
+
+# Experimental
+# set sidebar_visible = yes
+# set quit = ask-yes
+# set editor = "subl -w"
+# auto_view text/html
+set sleep_time = 0
+set read_only = yes
+
+# scroll inside the message rather than the index
+bind pager <up> previous-line
+bind pager <down> next-line
+
+# set mbox_type = Maildir
+# set folder    = "~/Maildir/personal"
+# set spoolfile = "+INBOX"
+# set postponed = "+[Gmail]/Drafts"
+# set record    = "+[Gmail]/Sent Mail"
+# set trash     = "+[Gmail]/Trash"
+# set from      = "Jason Han <jasonerichan@gmail.com>"
+
+# set mbox_type = Maildir
+# set folder    = "~/maildir/icloud"
+# set spoolfile = "+INBOX"
+# set postponed = "+Drafts"
+# set record    = "+Sent Messages"
+# set trash     = "+Trash"
+# set from      = "Jason Han <jasonerichan@icloud.com>"
+
+# set mbox_type = Maildir
+# set folder    = "~/Maildir/vassar"
+# set spoolfile = "+INBOX"
+# set postponed = "+[Gmail]/Drafts"
+# set record    = "+[Gmail]/Sent Mail"
+# set trash     = "+[Gmail]/Trash"
+# set from      = "Jason Han <jjhan@vassar.edu>"
+
+set mbox_type = Maildir
+set folder    = "~/Maildir/vassar-alum"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record    = "+[Gmail]/Sent Mail"
+set trash     = "+[Gmail]/Trash"
+set from      = "Jason Han <jjhan@alum.vassar.edu>"
+
+# set mbox_type = Maildir
+# set folder    = "~/Maildir/mail-experiment"
+# set spoolfile = "+INBOX"
+# set postponed = "+[Gmail]/Drafts"
+# set record    = "+[Gmail]/Sent Mail"
+# set copy      = no  # https://superuser.com/a/1106152
+# set trash     = "+[Gmail]/Trash"
+# set from      = "Jason Han <jasonmailexperiment@gmail.com>"
+# set sendmail  = "msmtp -a mail-experiment"
+
+# set mbox_type = Maildir
+# set folder    = "~/Maildir/professional"
+# set spoolfile = "+INBOX"
+# set postponed = "+[Gmail]/Drafts"
+# set record    = "+[Gmail]/Sent Mail"
+# set copy      = no  # https://superuser.com/a/1106152
+# set trash     = "+[Gmail]/Trash"
+# set from      = "Jason Han <jasonhanvassar@gmail.com>"
+
+# https://gitlab.com/muttmua/mutt/-/wikis/MuttGuide/Caching
+set message_cachedir = "$XDG_CACHE_HOME/mutt"
+set header_cache = "$XDG_CACHE_HOME/mutt"
+set mailcap_path = "$XDG_CONFIG_HOME/mailcap"

@@ -1,0 +1,23 @@
+[core]
+	precomposeUnicode = true
+	editor = subl -w
+	pager = less -+$LESS -FR  # https://stackoverflow.com/a/59057559/14698275
+	untrackedCache = true     # experimental
+# [credential]
+# 	helper = keepassxc
+[user]
+	name = Jason Han
+	email = jjhan@alum.vassar.edu
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
+[log]
+	date = local
+[alias]
+	changelog = log @{1}..
+	when-added = log --follow --diff-filter=A --find-renames=40%
+
+# https://stackoverflow.com/a/74708954
+[includeIf "hasconfig:remote.*.url:git@jzhou.github.com*/**"]
+  path = config-judy

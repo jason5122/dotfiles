@@ -1,0 +1,30 @@
+import = [
+  "~/.config/alacritty/keybindings.toml",
+  "~/.config/alacritty/breakers.toml",
+  # "~/.config/alacritty/mariana.toml",
+]
+
+[cursor]
+thickness = 0.2
+unfocused_hollow = false
+style = { shape = "Beam" }
+
+[font]
+size = 16.0
+offset = { x = 1, y = 2 }
+normal = { family = "Source Code Pro", style = "Regular" }
+bold = { style = "Bold" }
+italic = { style = "Italic" }
+bold_italic = { style = "Bold Italic" }
+
+[window]
+startup_mode = "Maximized"
+padding = { x = 5, y = 5 }
+option_as_alt = "Both"
+
+[scrolling]
+multiplier = 1
+
+[debug]
+# render_timer = true
+# highlight_damage = true

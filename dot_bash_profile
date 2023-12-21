@@ -1,0 +1,27 @@
+# DEBUG: shows all commands that are run
+# set -x # xtrace
+
+test -f ~/.profile && . $_
+
+export PROMPT_DIRTRIM=3
+export HISTCONTROL=ignoreboth
+shopt -s autocd
+
+export CLICOLOR=1 # add color to ls
+# https://geoff.greer.fm/lscolors/
+export LSCOLORS='exfxcxdxbxegedabagacad'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
+
+export VISUAL='subl -w'
+export PAGER=less
+
+if [ -n "$PS1" ]; then # test for interactive shell
+    # PS1="\[\e[1;32m\]\u@\h\[\e[0m\]: \[\e[1;34m\]\w\n\[\e[0m\]\$ "
+    PS1="\[\e[0;32m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\]: \[\e[0;33m\]\w\n\[\e[0m\]\$ "
+
+    # bind -x '"\C-l": clear -x'
+    # bind -x '"\C-l": printf "\e[H\e[2J"'  # faster than `clear -x`?
+    # bind -x '"\C-l": tput reset'
+fi
+
+test -f /usr/local/etc/bash_completion.d/git-completion.bash && . $_
