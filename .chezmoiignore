@@ -1,4 +1,6 @@
 **/.DS_Store
+*.sublime-project
+*.sublime-workspace
 
 .config/zsh/.zcompcache/
 .config/zsh/.zsh_sessions/

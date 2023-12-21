@@ -24,5 +24,3 @@ hs.hotkey.bind({"cmd", "ctrl"}, "B", open_app("Chromium.app"))
 hs.hotkey.bind({"cmd", "ctrl"}, "C", open_app("Pixie.app"))
 hs.hotkey.bind({"cmd", "ctrl"}, "D", open_app("Quartz Debug.app"))
 hs.hotkey.bind({"cmd", "ctrl"}, "A", open_app("Activity Monitor.app"))
-
--- hs.loadSpoon("ControlEscape"):start()
