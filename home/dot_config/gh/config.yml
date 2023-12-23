@@ -1,4 +1,2 @@
 git_protocol: ssh
-aliases:
-  co: pr checkout
 version: "1"

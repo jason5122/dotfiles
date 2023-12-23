@@ -76,3 +76,5 @@ source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.2.2
 
 export LESS=-FR
+
+source ~/.config/op/plugins.sh
