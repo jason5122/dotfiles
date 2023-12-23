@@ -10,7 +10,11 @@ unfocused_hollow = false
 style = { shape = "Beam" }
 
 [font]
+{{- if eq .chezmoi.os "darwin" }}
 size = 16.0
+{{ else if eq .chezmoi.os "linux" }}
+size = 12.0
+{{ end -}}
 offset = { x = 1, y = 2 }
 normal = { family = "Source Code Pro", style = "Regular" }
 bold = { style = "Bold" }
@@ -20,7 +24,9 @@ bold_italic = { style = "Bold Italic" }
 [window]
 startup_mode = "Maximized"
 padding = { x = 5, y = 5 }
+{{- if eq .chezmoi.os "darwin" }}
 option_as_alt = "Both"
+{{ end }}
 
 [scrolling]
 multiplier = 1
