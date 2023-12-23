@@ -2,6 +2,7 @@
 
 # unset zle_bracketed_paste
 
+HISTFILE="$ZDOTDIR"/.zsh_history
 setopt HIST_IGNORE_DUPS
 HISTSIZE=5000
 SAVEHIST=5000
@@ -104,13 +105,20 @@ function oath {
   fi
 }
 
+
 # fzf
+{{- if eq .chezmoi.os "darwin" }}
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
   PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
 fi
-source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
+source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 # auto-completion
 # [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+{{ else if eq .chezmoi.os "linux" }}
+if [ -x "$(command -v fzf)"  ]; then
+  source /usr/share/fzf/shell/key-bindings.zsh
+fi
+{{ end }}
 
 alias irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi'
 
