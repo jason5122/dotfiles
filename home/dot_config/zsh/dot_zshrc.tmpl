@@ -15,6 +15,7 @@ PS1="%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%(5~|%-1~/.
 
 export VISUAL='subl -w'
 export PAGER=less
+export LESS=-FR
 
 # ===========
 # Keybindings
@@ -115,10 +116,17 @@ source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 # auto-completion
 # [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
 {{ else if eq .chezmoi.os "linux" }}
-if [ -x "$(command -v fzf)"  ]; then
+if [ -x "$(command -v fzf)" ]; then
   source /usr/share/fzf/shell/key-bindings.zsh
 fi
-{{ end }}
+
+alias rpm-list="rpm --query --all --queryformat '%{NAME}.%{ARCH}: %{SUMMARY}\n'"
+
+# https://unix.stackexchange.com/a/524176/384673
+function open() {
+  nohup xdg-open "$*" >/dev/null 2>&1
+}
+{{- end }}
 
 alias irssi='irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi'
 

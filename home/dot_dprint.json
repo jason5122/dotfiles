@@ -3,19 +3,17 @@
     "quoteStyle": "preferSingle"
   },
 
-  "prettier": {
-    "singleQuote": true,
-    "bracketSameLine": true
+  "ruff": {
+    "quoteStyle": "single"
   },
 
   "plugins": [
     "https://plugins.dprint.dev/markdown-0.16.1.wasm",
-    "https://plugins.dprint.dev/json-0.17.4.wasm",
+    "https://plugins.dprint.dev/json-0.19.1.wasm",
     "https://plugins.dprint.dev/dockerfile-0.3.0.wasm",
     "https://plugins.dprint.dev/typescript-0.88.3.wasm",
     "https://plugins.dprint.dev/toml-0.5.4.wasm",
     "https://plugins.dprint.dev/ruff-0.0.4.wasm",
-    "https://plugins.dprint.dev/sql-0.2.0.wasm",
-    "https://plugins.dprint.dev/prettier-0.30.0.json@17f1975e77b53f95c642a25588bf27b0d3f36ebb70cbe134875f6b3c75736eed"
+    "https://plugins.dprint.dev/sql-0.2.0.wasm"
   ]
 }

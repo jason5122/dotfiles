@@ -21,11 +21,15 @@ export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 
+PATH=~/.local/bin:"$PATH" # warning: overrides defaults
+PATH="$PATH":"$GOPATH"/bin
+PATH="$PATH:$CARGO_HOME/bin"
+source "$CARGO_HOME/env"
+
+{{- if eq .chezmoi.os "darwin" }}
 export HOMEBREW_CASK_OPTS='--no-quarantine'
 
 HOMEBREW_PREFIX=/opt/homebrew
-
-PATH=~/.local/bin:"$PATH" # warning: overrides defaults
 
 PATH="$HOMEBREW_PREFIX/opt/python@3.11/bin:$PATH"         # overwrite macOS python3
 PATH="$PATH:$HOMEBREW_PREFIX/opt/python@3.11/libexec/bin" # unversioned
@@ -36,20 +40,14 @@ PATH="$PATH:/Applications/AllegroCL64express.app/Contents/Resources"
 
 PATH="$PATH":~/experiments/code-formatters/styler
 
-PATH="$PATH:$CARGO_HOME/bin"
-
 # https://gitlab.com/muttmua/mutt/-/blob/master/contrib/mutt_oauth2.py.README
 export GPG_TTY=$(tty)
 
 # PATH="$HOMEBREW_PATH/opt/libtool/libexec/gnubin:$PATH"
 
-PATH="$PATH":"$GOPATH"/bin
-
 PATH="$HOMEBREW_PREFIX/bin:$PATH" # warning: overrides defaults
 
 # PATH="$HOMEBREW_PREFIX/opt/libtool/libexec/gnubin:$PATH" # warning: overrides defaults
-
-source "$CARGO_HOME/env"
 
 export NVM_SYMLINK_CURRENT=true
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
@@ -75,6 +73,5 @@ source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.2.2
 
-export LESS=-FR
-
 source ~/.config/op/plugins.sh
+{{ end }}

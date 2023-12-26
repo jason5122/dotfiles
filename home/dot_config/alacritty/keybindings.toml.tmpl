@@ -4,16 +4,13 @@ bindings = [
   { key = "Z", mods = "Super", chars = "\u001F" },
   { key = "Left", mods = "Alt", chars = "\u001Bb" },
   { key = "Right", mods = "Alt", chars = "\u001Bf" },
-  { key = "Left", mods = "Super", chars = "\u001BOH" },
-  { key = "Right", mods = "Super", chars = "\u001BOF" },
+  { key = "Left", mods = "Super", chars = "\u0001" },
+  { key = "Right", mods = "Super", chars = "\u0005" },
   { key = "V", mods = "Shift|Super", action = "ToggleViMode" },
-
-{{- if eq .chezmoi.os "darwin" }}
-  # macOS
-  { key = "Comma", mods = "Super", command = { args = ["-c", "open -t ~/.config/zsh/.zshrc"], program = "sh" } },
-  { key = "Comma", mods = "Shift|Super", command = { args = ["-c", "open -t ~/.config/alacritty/alacritty.toml"], program = "sh" } },
-  { key = "Comma", mods = "Alt|Super", command = { args = ["-c", "open -t ~/.profile"], program = "sh" } },
-{{ else if eq .chezmoi.os "linux" }}
+  { key = "Comma", mods = "Super", command = { args = ["~/.config/zsh/.zshrc"], program = "subl" } },
+  { key = "Comma", mods = "Shift|Super", command = { args = ["~/.config/alacritty/alacritty.toml"], program = "subl" } },
+  { key = "Comma", mods = "Alt|Super", command = { args = ["~/.profile"], program = "subl" } },
+{{- if eq .chezmoi.os "linux" }}
   # Linux
   { key = "W", mods = "Super", action = "Quit" },
   { key = "Q", mods = "Super", action = "Quit" },
