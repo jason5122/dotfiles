@@ -1,14 +1,6 @@
-{{- if eq .chezmoi.os "darwin" -}}
-Host *
-  IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
-{{- else if eq .chezmoi.os "linux" -}}
-Host *
-  IdentityAgent ~/.1password/agent.sock
-{{- end }}
-
 # Replace "git@github.com" with "judy-git" in remote URL.
 Host judy-git
   Hostname github.com
   User git
-  IdentityFile ~/.ssh/id_ed25519_judy.pub
+  IdentityFile ~/.ssh/id_ed25519_judy
   IdentitiesOnly yes

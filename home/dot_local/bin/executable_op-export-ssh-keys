@@ -1,0 +1,13 @@
+#!/bin/bash
+
+keys=('id_ed25519' 'id_ed25519_judy' 'id_rsa')
+
+for key in "${keys[@]}"; do
+  if [ -f ~/.ssh/"$key" ]; then
+    echo ~/.ssh/"$key" exists
+  else
+    op read op://Personal/"$key"/'private key' >~/.ssh/"$key"
+  fi
+
+  chmod 600 ~/.ssh/"$key"
+done
