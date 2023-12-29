@@ -6,7 +6,7 @@ for key in "${keys[@]}"; do
   if [ -f ~/.ssh/"$key" ]; then
     echo ~/.ssh/"$key" exists
   else
-    op read op://Personal/"$key"/'private key' >~/.ssh/"$key"
+    op read op://Programming/"$key"/'private key' >~/.ssh/"$key"
   fi
 
   chmod 600 ~/.ssh/"$key"
