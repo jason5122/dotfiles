@@ -73,6 +73,11 @@ zstyle ':completion:*' insert-tab false
 autoload -U select-word-style
 select-word-style bash
 
+{{ if eq .chezmoi.os "darwin" -}}
+autoload bashcompinit && bashcompinit
+complete -C '/opt/homebrew/bin/aws_completer' aws
+{{- end }}
+
 # =============
 # Miscellaneous
 # =============
