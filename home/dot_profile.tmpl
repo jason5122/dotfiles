@@ -29,10 +29,8 @@ source "$CARGO_HOME/env"
 {{- if eq .chezmoi.os "darwin" }}
 export HOMEBREW_CASK_OPTS='--no-quarantine'
 
-HOMEBREW_PREFIX=/opt/homebrew
-
-PATH="$HOMEBREW_PREFIX/opt/python@3.11/bin:$PATH"         # overwrite macOS python3
-PATH="$PATH:$HOMEBREW_PREFIX/opt/python@3.11/libexec/bin" # unversioned
+PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"         # overwrite macOS python3
+PATH="$PATH:/opt/homebrew/opt/python@3.11/libexec/bin" # unversioned
 
 export CPLUS_INCLUDE_PATH=~/vassar/current/the-grind/competitive-programming
 
@@ -45,9 +43,9 @@ export GPG_TTY=$(tty)
 
 # PATH="$HOMEBREW_PATH/opt/libtool/libexec/gnubin:$PATH"
 
-PATH="$HOMEBREW_PREFIX/bin:$PATH" # warning: overrides defaults
+PATH="/opt/homebrew/bin:$PATH" # warning: overrides defaults
 
-# PATH="$HOMEBREW_PREFIX/opt/libtool/libexec/gnubin:$PATH" # warning: overrides defaults
+# PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH" # warning: overrides defaults
 
 export NVM_SYMLINK_CURRENT=true
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
