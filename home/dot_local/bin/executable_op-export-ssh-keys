@@ -1,6 +1,6 @@
 #!/bin/bash
 
-keys=('id_ed25519' 'id_ed25519_judy' 'id_rsa')
+keys=('id_ed25519')
 
 for key in "${keys[@]}"; do
   if [ -f ~/.ssh/"$key" ]; then

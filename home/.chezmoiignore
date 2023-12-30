@@ -11,6 +11,4 @@
 
 .ssh/known_hosts*
 .ssh/id_ed25519
-.ssh/id_ed25519_judy
-.ssh/id_rsa
 .ssh/aws_ec2.pem
