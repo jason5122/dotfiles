@@ -7,11 +7,16 @@ bindings = [
   { key = "Left", mods = "Super", chars = "\u0001" },
   { key = "Right", mods = "Super", chars = "\u0005" },
   { key = "V", mods = "Shift|Super", action = "ToggleViMode" },
+{{ if eq .chezmoi.os "mac" -}}
+  # Mac
   { key = "Comma", mods = "Super", command = { args = ["-c", "open ~/.config/zsh/.zshrc"], program = "sh" } },
   { key = "Comma", mods = "Shift|Super", command = { args = ["-c", "open ~/.config/alacritty/alacritty.toml"], program = "sh" } },
   { key = "Comma", mods = "Alt|Super", command = { args = ["-c", "open ~/.profile"], program = "sh" } },
-{{- if eq .chezmoi.os "linux" }}
+{{ else if eq .chezmoi.os "linux" -}}
   # Linux
+  { key = "Comma", mods = "Super", command = { args = ["~/.config/zsh/.zshrc"], program = "subl" } },
+  { key = "Comma", mods = "Shift|Super", command = { args = ["~/.config/alacritty/alacritty.toml"], program = "subl" } },
+  { key = "Comma", mods = "Alt|Super", command = { args = ["~/.profile"], program = "subl" } },
   { key = "W", mods = "Super", action = "Quit" },
   { key = "Q", mods = "Super", action = "Quit" },
   { key = "C", mods = "Super", action = "Copy" },
@@ -21,5 +26,5 @@ bindings = [
   { key = "0", mods = "Super", action = "ResetFontSize" },
   { key = "=", mods = "Super", action = "IncreaseFontSize" },
   { key = "-", mods = "Super", action = "DecreaseFontSize" },
-{{ end }}
+{{- end }}
 ]
