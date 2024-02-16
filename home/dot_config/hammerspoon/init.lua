@@ -36,6 +36,8 @@ local bindings = {
     b = launchOrFocus("Chromium"),
     a = launchOrFocus("Activity Monitor"),
     c = launchOrFocus("Pixie"),
+    d = launchOrFocus("Quartz Debug"),
+    i = launchOrFocus("Simple Text"),
   },
 
   [{ "alt", "ctrl" }] = {

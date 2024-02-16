@@ -4,7 +4,8 @@
   },
 
   "ruff": {
-    "quoteStyle": "single"
+    "quoteStyle": "single",
+    "lineLength": 100
   },
 
   "plugins": [

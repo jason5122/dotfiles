@@ -70,4 +70,7 @@ export Qt5_DIR="/opt/homebrew/opt/qt@5/lib/cmake/Qt5"
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.2.2
+
+# https://stackoverflow.com/a/65277351/14698275
+export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
 {{- end }}

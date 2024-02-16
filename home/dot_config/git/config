@@ -3,8 +3,6 @@
 	editor = subl -w
 	pager = less -+$LESS -FR  # https://stackoverflow.com/a/59057559/14698275
 	untrackedCache = true     # experimental
-# [credential]
-# 	helper = keepassxc
 [user]
 	name = Jason Han
 	email = jjhan@alum.vassar.edu
