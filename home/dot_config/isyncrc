@@ -157,3 +157,30 @@ Create Both
 Remove Both
 Expunge Both
 SyncState *
+
+
+
+IMAPAccount columbia
+Host imap.gmail.com
+TLSType IMAPS
+User jason.han@columbia.edu
+PassCmd "~/experiments/email/mutt_oauth2/columbia/mutt_oauth2.py ~/experiments/email/mutt_oauth2/columbia/jason.han@columbia.edu.tokens"
+AuthMechs XOAUTH2
+
+IMAPStore columbia-remote
+Account columbia
+
+MaildirStore columbia-local
+# The trailing "/" is important
+Path ~/maildir/columbia/
+Inbox ~/maildir/columbia/INBOX
+SubFolders Verbatim
+
+Channel columbia
+Far :columbia-remote:
+Near :columbia-local:
+Patterns * !"[Gmail]/All Mail" !"[Gmail]/Important"
+# Patterns * ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Trash"
+Create Near
+Sync Pull
+SyncState *

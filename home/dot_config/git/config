@@ -5,7 +5,7 @@
 	untrackedCache = true     # experimental
 [user]
 	name = Jason Han
-	email = jjhan@alum.vassar.edu
+	email = jason.han@columbia.edu
 [init]
 	defaultBranch = main
 [push]

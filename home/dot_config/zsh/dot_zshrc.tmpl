@@ -50,6 +50,14 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
+# F1 = '^[OP'
+function clear-screen-and-scrollback-and-run-again {
+  clear-screen-and-scrollback
+  run-again
+}
+zle -N clear-screen-and-scrollback-and-run-again
+bindkey '^[OP' clear-screen-and-scrollback-and-run-again
+
 # ===========
 # Completions
 # ===========
@@ -111,7 +119,6 @@ function oath {
   fi
 }
 
-
 # fzf
 {{- if eq .chezmoi.os "darwin" }}
 if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
@@ -120,7 +127,7 @@ fi
 source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
 # auto-completion
 # [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
-{{ else if eq .chezmoi.os "linux" }}
+{{- else if eq .chezmoi.os "linux" }}
 if [ -x "$(command -v fzf)" ]; then
   source /usr/share/fzf/shell/key-bindings.zsh
 fi

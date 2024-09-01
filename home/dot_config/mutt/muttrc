@@ -38,13 +38,13 @@ bind pager <down> next-line
 # set trash     = "+[Gmail]/Trash"
 # set from      = "Jason Han <jjhan@vassar.edu>"
 
-set mbox_type = Maildir
-set folder    = "~/Maildir/vassar-alum"
-set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set record    = "+[Gmail]/Sent Mail"
-set trash     = "+[Gmail]/Trash"
-set from      = "Jason Han <jjhan@alum.vassar.edu>"
+# set mbox_type = Maildir
+# set folder    = "~/Maildir/vassar-alum"
+# set spoolfile = "+INBOX"
+# set postponed = "+[Gmail]/Drafts"
+# set record    = "+[Gmail]/Sent Mail"
+# set trash     = "+[Gmail]/Trash"
+# set from      = "Jason Han <jjhan@alum.vassar.edu>"
 
 # set mbox_type = Maildir
 # set folder    = "~/Maildir/mail-experiment"
@@ -64,6 +64,14 @@ set from      = "Jason Han <jjhan@alum.vassar.edu>"
 # set copy      = no  # https://superuser.com/a/1106152
 # set trash     = "+[Gmail]/Trash"
 # set from      = "Jason Han <jasonhanvassar@gmail.com>"
+
+set mbox_type = Maildir
+set folder    = "~/Maildir/columbia"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record    = "+[Gmail]/Sent Mail"
+set trash     = "+[Gmail]/Trash"
+set from      = "Jason Han <jason.han@columbia.edu>"
 
 # https://gitlab.com/muttmua/mutt/-/wikis/MuttGuide/Caching
 set message_cachedir = "$XDG_CACHE_HOME/mutt"
