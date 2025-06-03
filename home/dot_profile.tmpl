@@ -1,8 +1,7 @@
 # ==================
 # XDG Base Directory
-# ==================
-
 # https://wiki.archlinux.org/title/XDG_Base_Directory
+# ==================
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
 export XDG_DATA_HOME="$HOME"/.local/share
@@ -21,31 +20,16 @@ export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 export INPUTRC="$XDG_CONFIG_HOME"/readline/inputrc
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
 
-PATH=~/.local/bin:"$PATH" # warning: overrides defaults
 PATH="$PATH":"$GOPATH"/bin
 PATH="$PATH:$CARGO_HOME/bin"
 source "$CARGO_HOME/env"
 
-{{- if eq .chezmoi.os "darwin" }}
+{{if eq .chezmoi.os "darwin" -}}
+# NOTE: This takes precedence over default paths (e.g., /usr/bin).
+PATH=~/.local/bin:"$PATH"
+PATH="/opt/homebrew/bin:$PATH"
+
 export HOMEBREW_CASK_OPTS='--no-quarantine'
-
-PATH="/opt/homebrew/opt/python@3.11/bin:$PATH"         # overwrite macOS python3
-PATH="$PATH:/opt/homebrew/opt/python@3.11/libexec/bin" # unversioned
-
-export CPLUS_INCLUDE_PATH=~/vassar/current/the-grind/competitive-programming
-
-PATH="$PATH:/Applications/AllegroCL64express.app/Contents/Resources"
-
-PATH="$PATH":~/experiments/code-formatters/styler
-
-# https://gitlab.com/muttmua/mutt/-/blob/master/contrib/mutt_oauth2.py.README
-export GPG_TTY=$(tty)
-
-# PATH="$HOMEBREW_PATH/opt/libtool/libexec/gnubin:$PATH"
-
-PATH="/opt/homebrew/bin:$PATH" # warning: overrides defaults
-
-# PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH" # warning: overrides defaults
 
 export NVM_SYMLINK_CURRENT=true
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
@@ -54,22 +38,6 @@ PATH="$NVM_DIR/current/bin:$PATH" # warning: overrides defaults
 PATH="$PATH:/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 PATH="$PATH:/Applications/Alacritty.app/Contents/MacOS"
 PATH="$PATH:/Applications/IINA.app/Contents/MacOS"
-
-# export PATH="$PATH":~/experiments/chromium/depot_tools
-
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.19.jdk/Contents/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.8.jdk/Contents/Home
-
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-LDFLAGS="-L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-
-# Qt5
-export Qt5_DIR="/opt/homebrew/opt/qt@5/lib/cmake/Qt5"
-
-# Ruby
-source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-chruby ruby-3.2.2
 
 # https://stackoverflow.com/a/65277351/14698275
 export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)

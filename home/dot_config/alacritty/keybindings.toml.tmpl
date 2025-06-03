@@ -12,6 +12,8 @@ bindings = [
   { key = "Comma", mods = "Super", command = { args = ["-c", "open ~/.config/zsh/.zshrc"], program = "sh" } },
   { key = "Comma", mods = "Shift|Super", command = { args = ["-c", "open ~/.config/alacritty/alacritty.toml"], program = "sh" } },
   { key = "Comma", mods = "Alt|Super", command = { args = ["-c", "open ~/.profile"], program = "sh" } },
+  { key = "J", mods = "Super", action = "SelectPreviousTab" },
+  { key = "K", mods = "Super", action = "SelectNextTab" },
 {{- else if eq .chezmoi.os "linux" }}
   # Linux
   { key = "Comma", mods = "Super", command = { args = ["~/.config/zsh/.zshrc"], program = "subl" } },
