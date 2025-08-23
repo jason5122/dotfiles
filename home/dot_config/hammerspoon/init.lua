@@ -1,8 +1,12 @@
+-- https://github.com/twpayne/dotfiles/blob/master/home/dot_hammerspoon/init.lua
+
 hs.grid.setGrid("4x4")
 hs.grid.setMargins({ 0, 0 })
 hs.window.animationDuration = 0
 
 local grid = {
+  leftHalf = "0,0 2x4",
+  rightHalf = "2,0 2x4",
   leftTopHalf = "0,0 2x2",
   leftBottomHalf = "0,2 2x2",
   rightTopHalf = "2,0 2x2",
@@ -24,7 +28,6 @@ function moveFrontmostWindow(where)
   end
 end
 
--- https://github.com/twpayne/dotfiles/blob/master/home/dot_hammerspoon/init.lua
 local bindings = {
   [{ "cmd", "ctrl" }] = {
     t = launchOrFocus("Alacritty"),
@@ -41,6 +44,8 @@ local bindings = {
   },
 
   [{ "alt", "ctrl" }] = {
+    n = moveFrontmostWindow(grid.leftHalf),
+    m = moveFrontmostWindow(grid.rightHalf),
     u = moveFrontmostWindow(grid.leftTopHalf),
     j = moveFrontmostWindow(grid.leftBottomHalf),
     i = moveFrontmostWindow(grid.rightTopHalf),
@@ -53,12 +58,3 @@ for modifier, keyActions in pairs(bindings) do
     hs.hotkey.bind(modifier, tostring(key), action)
   end
 end
-
-function reloadConfig(files)
-  for _, file in pairs(files) do
-    if file:sub(-4) == ".lua" then
-      hs.reload()
-    end
-  end
-end
-hs.pathwatcher.new(os.getenv("HOME") .. "/.config/hammerspoon/", reloadConfig):start()

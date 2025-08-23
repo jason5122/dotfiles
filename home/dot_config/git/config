@@ -10,8 +10,12 @@
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+	default = simple
 [log]
 	date = local
 [alias]
 	changelog = log @{1}..
 	when-added = log --follow --diff-filter=A --find-renames=40%
+	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[color]
+	ui = auto

@@ -17,8 +17,8 @@ export LESS=-FR
 # ==================================================================================================
 # Keybindings
 # ==================================================================================================
-
-# bindkey \^U backward-kill-line # same as bash
+# https://unix.stackexchange.com/questions/522663/ctrl-u-deletes-whole-line-regardless-of-cursor-position
+bindkey \^U backward-kill-line
 
 bindkey '^[[Z' reverse-menu-complete
 
@@ -58,6 +58,11 @@ bindkey '^[OP' clear-screen-and-scrollback-and-run-again
 # ==================================================================================================
 # Completions
 # ==================================================================================================
+
+# TODO: Clean this up.
+FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
+FPATH="$HOMEBREW_PREFIX/share/zsh-completions:$FPATH"
+# autoload -Uz compinit && compinit -C
 
 # rustup completions zsh > $XDG_CONFIG_HOME/zsh/.zfunc/_rustup
 # rustup completions zsh cargo > $XDG_CONFIG_HOME/zsh/.zfunc/_cargo
@@ -123,5 +128,9 @@ function open() {
   nohup xdg-open "$*" >/dev/null 2>&1
 }
 {{- end }}
+
+function set-title {
+  printf "\e]2;$1\a"
+}
 
 # zprof
