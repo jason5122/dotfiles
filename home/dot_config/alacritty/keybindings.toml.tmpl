@@ -10,7 +10,7 @@ bindings = [
 {{- if eq .chezmoi.os "darwin" }}
   # Mac
   { key = "Comma", mods = "Super", command = { args = ["-c", "open ~/.config/zsh/.zshrc"], program = "sh" } },
-  { key = "Comma", mods = "Shift|Super", command = { args = ["-c", "open ~/.config/alacritty/alacritty.toml"], program = "sh" } },
+  { key = "<", mods = "Shift|Super", command = { args = ["-c", "open ~/.config/alacritty/alacritty.toml"], program = "sh" } },
   { key = "Comma", mods = "Alt|Super", command = { args = ["-c", "open ~/.profile"], program = "sh" } },
   { key = "J", mods = "Super", action = "SelectPreviousTab" },
   { key = "K", mods = "Super", action = "SelectNextTab" },

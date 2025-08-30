@@ -1,21 +1,15 @@
-[core]
-	precomposeUnicode = true
-	editor = subl -w
-	pager = less -+$LESS -FR  # https://stackoverflow.com/a/59057559/14698275
-	untrackedCache = true     # experimental
 [user]
 	name = Jason Han
 	email = jason.han@columbia.edu
 [init]
 	defaultBranch = main
+[core]
+	untrackedCache = true
 [push]
 	autoSetupRemote = true
-	default = simple
 [log]
 	date = local
 [alias]
 	changelog = log @{1}..
 	when-added = log --follow --diff-filter=A --find-renames=40%
 	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-[color]
-	ui = auto

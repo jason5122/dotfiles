@@ -1,18 +1,37 @@
 # zmodload zsh/zprof # https://stevenvanbael.com/profiling-zsh-startup
 
-HISTFILE="$ZDOTDIR"/.zsh_history
+HISTFILE="$ZDOTDIR/.zsh_history"
 setopt HIST_IGNORE_DUPS
 HISTSIZE=100000
 SAVEHIST=100000
 
-# https://stackoverflow.com/a/2534676/14698275
-autoload -U colors && colors
-# PS1="%n@%m: %3~"$'\n'"\$ "
-PS1="%{$fg[green]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%(5~|%-1~/.../%3~|%4~)"$'\n'"%{$reset_color%}\$ "
+PROMPT='%F{green}%n%f@%F{blue}%m%f %F{yellow}%(5~|%-1~/…/%3~|%4~)%f
+$ '
+# https://git-scm.com/book/sv/v2/Bilaga-A:-Git-in-Other-Environments-Git-in-Zsh
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+setopt prompt_subst
+RPROMPT=\$vcs_info_msg_0_
+zstyle ':vcs_info:git:*' formats '%b'
 
 export VISUAL='subl -w'
 export PAGER=less
 export LESS=-FR
+
+# ==================================================================================================
+# Completions
+# ==================================================================================================
+fpath=("$ZDOTDIR/completions" $fpath)
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$ZDOTDIR/cache"
+zstyle ':completion:*' insert-tab false
+
+autoload -Uz compinit && compinit -C
+
+autoload -U select-word-style
+select-word-style bash
 
 # ==================================================================================================
 # Keybindings
@@ -22,115 +41,53 @@ bindkey \^U backward-kill-line
 
 bindkey '^[[Z' reverse-menu-complete
 
-function clear-screen-and-scrollback {
-  printf '\ec'
-  zle .reset-prompt && zle -R
-}
+function clear-screen-and-scrollback { printf '\ec'; zle .reset-prompt && zle -R; }
 zle -N clear-screen-and-scrollback
 bindkey '\e^l' clear-screen-and-scrollback
 
-function run-again {
-  zle up-history
-  zle accept-line
-}
+function run-again { zle up-history; zle accept-line; }
 zle -N run-again
 bindkey '\e^p' run-again
 
+# Ctrl-X, Ctrl-S: Save current command in buffer and restore after next command is run.
 # https://github.com/iloveitaly/dotfiles/blob/master/.zshrc
-# save current command in buffer & restore after next command is run
 # https://unix.stackexchange.com/a/74381
 autoload -U push-input
 bindkey '^X^S' push-input
 
-# open up current command in EDITOR, ctrl+x then ctrl+e
+# Ctrl-X, Ctrl-E: Open up current command in EDITOR.
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# F1 = '^[OP'
-function clear-screen-and-scrollback-and-run-again {
-  clear-screen-and-scrollback
-  run-again
-}
+# F1: Clear scrollback and re-run previous command.
+function clear-screen-and-scrollback-and-run-again { clear-screen-and-scrollback; run-again; }
 zle -N clear-screen-and-scrollback-and-run-again
 bindkey '^[OP' clear-screen-and-scrollback-and-run-again
 
 # ==================================================================================================
-# Completions
-# ==================================================================================================
-
-# TODO: Clean this up.
-FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
-FPATH="$HOMEBREW_PREFIX/share/zsh-completions:$FPATH"
-# autoload -Uz compinit && compinit -C
-
-# rustup completions zsh > $XDG_CONFIG_HOME/zsh/.zfunc/_rustup
-# rustup completions zsh cargo > $XDG_CONFIG_HOME/zsh/.zfunc/_cargo
-# dprint completions zsh > $XDG_CONFIG_HOME/zsh/.zfunc/_dprint
-# runpodctl completion zsh > $XDG_CONFIG_HOME/zsh/.zfunc/_runpodctl
-
-fpath+="$ZDOTDIR/.zfunc"
-
-# https://gist.github.com/ctechols/ca1035271ad134841284?permalink_comment_id=4624611#gistcomment-4624611
-autoload -Uz compinit
-if [ "$(find ${ZDOTDIR}/.zcompdump -mtime +1)" ]; then
-  compinit
-else
-  compinit -C
-fi
-
-zstyle ':completion:*' insert-tab false
-
-autoload -U select-word-style
-select-word-style bash
-
-{{ if eq .chezmoi.os "darwin" -}}
-autoload bashcompinit && bashcompinit
-complete -C '/opt/homebrew/bin/aws_completer' aws
-{{- end }}
-
-# ==================================================================================================
 # Miscellaneous
 # ==================================================================================================
+function maybe_source { [[ $- == *i* && -f $1 ]] && . "$1"; }
 
-# https://stackoverflow.com/a/25391867/14698275
-# [[ $- == *i* ]] && stty -ixon
-
-function print-uti {
-  mdls -name kMDItemContentType $1
-}
-
-function oath {
-  if [ "$#" -ne 1 ]; then
-    echo "Usage: $0 ACCOUNT" >&2
-  else
-    ykman oath accounts code -s $1 | pbcopy
-  fi
-}
-
-# fzf
 {{- if eq .chezmoi.os "darwin" }}
-if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
-fi
-source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
-# auto-completion
-# [[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
+maybe_source /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+
 {{- else if eq .chezmoi.os "linux" }}
-if [ -x "$(command -v fzf)" ]; then
-  source /usr/share/fzf/shell/key-bindings.zsh
-fi
+maybe_source /usr/share/fzf/shell/key-bindings.zsh
 
 alias rpm-list="rpm --query --all --queryformat '%{NAME}.%{ARCH}: %{SUMMARY}\n'"
 
 # https://unix.stackexchange.com/a/524176/384673
-function open() {
-  nohup xdg-open "$*" >/dev/null 2>&1
-}
+function open { nohup xdg-open "$*" >/dev/null 2>&1; }
 {{- end }}
 
-function set-title {
-  printf "\e]2;$1\a"
-}
+function print-uti { mdls -name kMDItemContentType $1; }
+function oath { ykman oath accounts code -s $1; }
+function set-title { printf "\e]2;$1\a"; }
 
+alias cm=chezmoi
+
+
+unfunction maybe_source
 # zprof
