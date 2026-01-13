@@ -1,0 +1,33 @@
+theme = Breakers
+window-colorspace = display-p3
+
+font-family = Source Code Pro
+font-size = 16
+
+cursor-style = bar
+cursor-style-blink = false
+adjust-cursor-thickness = 3
+
+maximize = true
+quit-after-last-window-closed = true
+
+resize-overlay = never
+shell-integration-features = no-cursor, ssh-env
+bell-features = no-attention, no-title
+
+auto-update-channel = tip
+
+
+# Keybinds
+keybind = super+n=new_tab
+keybind = super+shift+n=new_window
+
+keybind = f1=text:!!\n
+keybind = f2=text:git status\n
+
+keybind = super+k=unbind
+keybind = super+t=unbind
+keybind = super++=unbind
+keybind = super+-=unbind
+keybind = super+equal=unbind
+keybind = super+0=unbind
