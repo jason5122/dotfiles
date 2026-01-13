@@ -30,8 +30,8 @@ end
 
 local bindings = {
   [{ "cmd", "ctrl" }] = {
-    t = launchOrFocus("Alacritty"),
-    f = launchOrFocus("Finder"),
+    t = launchOrFocus("Ghostty"),
+    f = launchOrFocus("ForkLift"),
     s = launchOrFocus("Sublime Text"),
     m = launchOrFocus("Messages"),
     r = launchOrFocus("Reminders"),

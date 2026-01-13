@@ -82,7 +82,6 @@ alias rpm-list="rpm --query --all --queryformat '%{NAME}.%{ARCH}: %{SUMMARY}\n'"
 function open { nohup xdg-open "$*" >/dev/null 2>&1; }
 {{- end }}
 
-function print-uti { mdls -name kMDItemContentType $1; }
 function oath { ykman oath accounts code -s $1; }
 function set-title { printf "\e]2;$1\a"; }
 
