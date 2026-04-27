@@ -1,4 +1,4 @@
-theme = Breakers
+theme = Mariana
 window-colorspace = display-p3
 
 font-family = Source Code Pro
@@ -15,6 +15,10 @@ resize-overlay = never
 shell-integration-features = no-cursor, ssh-env
 bell-features = no-attention, no-title
 
+notify-on-command-finish = unfocused
+notify-on-command-finish-action = notify
+notify-on-command-finish-after = 30s
+
 auto-update-channel = tip
 
 
@@ -22,8 +26,13 @@ auto-update-channel = tip
 keybind = super+n=new_tab
 keybind = super+shift+n=new_window
 
-keybind = f1=text:!!\n
-keybind = f2=text:git status\n
+keybind = f1=clear_screen
+keybind = chain=text:!!\n
+keybind = f2=clear_screen
+keybind = chain=text:git status\n
+keybind = super+l=clear_screen
+keybind = f3=text:emu_date_reset\n
+
 
 keybind = super+k=unbind
 keybind = super+t=unbind
@@ -31,3 +40,5 @@ keybind = super++=unbind
 keybind = super+-=unbind
 keybind = super+equal=unbind
 keybind = super+0=unbind
+keybind = super+j=previous_tab
+keybind = super+k=next_tab
