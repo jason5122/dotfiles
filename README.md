@@ -16,9 +16,10 @@ chezmoi init --ssh jason5122
 Completions that are not managed by Homebrew need to be manually generated:
 
 ```bash
-mkdir -p $ZDOTDIR/completions
-rustup completions zsh > $ZDOTDIR/completions/_rustup
-rustup completions zsh cargo > $ZDOTDIR/completions/_cargo
-dprint completions zsh > $ZDOTDIR/completions/_dprint
-runpodctl completion zsh > $ZDOTDIR/completions/_runpodctl
+mkdir -p "$ZDOTDIR/completions"
+rustup completions zsh > "$ZDOTDIR/completions/_rustup"
+rustup completions zsh cargo > "$ZDOTDIR/completions/_cargo"
+dprint completions zsh > "$ZDOTDIR/completions/_dprint"
+runpodctl completion zsh > "$ZDOTDIR/completions/_runpodctl"
+uv generate-shell-completion zsh > "$ZDOTDIR/completions/_uv"
 ```
