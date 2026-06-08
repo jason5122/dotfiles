@@ -1,8 +1,15 @@
 -- https://github.com/twpayne/dotfiles/blob/master/home/dot_hammerspoon/init.lua
+-- https://github.com/artnc/dotfiles/blob/master/hammerspoon/init.lua
+
+-- Auto-reload Hammerspoon config
+hs.alert("Config reloaded")
+_configWatcher = hs.pathwatcher.new("~/.hammerspoon/init.lua", function()
+  hs.reload()
+end):start()
 
 hs.grid.setGrid("4x4")
 hs.grid.setMargins({ 0, 0 })
-hs.window.animationDuration = 0
+-- hs.window.animationDuration = 0
 
 local grid = {
   leftHalf = "0,0 2x4",
@@ -40,15 +47,15 @@ local bindings = {
     c = launchOrFocus("Pixie"),
   },
 
-  [{ "alt", "ctrl" }] = {
-    n = moveFrontmostWindow(grid.leftHalf),
-    m = moveFrontmostWindow(grid.rightHalf),
-    u = moveFrontmostWindow(grid.leftTopHalf),
-    j = moveFrontmostWindow(grid.leftBottomHalf),
-    i = moveFrontmostWindow(grid.rightTopHalf),
-    k = moveFrontmostWindow(grid.rightBottomHalf),
-    ["return"] = moveFrontmostWindow(grid.maximize),
-  },
+  -- [{ "alt", "ctrl" }] = {
+  --   n = moveFrontmostWindow(grid.leftHalf),
+  --   m = moveFrontmostWindow(grid.rightHalf),
+  --   u = moveFrontmostWindow(grid.leftTopHalf),
+  --   j = moveFrontmostWindow(grid.leftBottomHalf),
+  --   i = moveFrontmostWindow(grid.rightTopHalf),
+  --   k = moveFrontmostWindow(grid.rightBottomHalf),
+  --   ["return"] = moveFrontmostWindow(grid.maximize),
+  -- },
 }
 for modifier, keyActions in pairs(bindings) do
   for key, action in pairs(keyActions) do
