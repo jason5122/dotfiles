@@ -21,17 +21,23 @@ notify-on-command-finish-after = 30s
 
 auto-update-channel = tip
 
+custom-shader = ./shaders/cursor_blaze.glsl
+
 
 # Keybinds
 keybind = super+n=new_tab
 keybind = super+shift+n=new_window
+keybind = super+j=previous_tab
+keybind = super+k=next_tab
 
 keybind = f1=clear_screen
 keybind = chain=text:!!\n
 keybind = f2=clear_screen
 keybind = chain=text:git status\n
+keybind = f3=clear_screen
+keybind = chain=text:cd ~/duolingo-android\n
+
 keybind = super+l=clear_screen
-keybind = f3=text:emu_date_reset\n
 
 
 keybind = super+k=unbind
@@ -40,5 +46,4 @@ keybind = super++=unbind
 keybind = super+-=unbind
 keybind = super+equal=unbind
 keybind = super+0=unbind
-keybind = super+j=previous_tab
-keybind = super+k=next_tab
+keybind = super+enter=unbind

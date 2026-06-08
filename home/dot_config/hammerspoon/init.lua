@@ -32,15 +32,12 @@ local bindings = {
   [{ "cmd", "ctrl" }] = {
     t = launchOrFocus("Ghostty"),
     f = launchOrFocus("ForkLift"),
-    s = launchOrFocus("Sublime Text"),
+    e = launchOrFocus("Sublime Text"),
+    g = launchOrFocus("Sublime Merge"),
     m = launchOrFocus("Messages"),
-    r = launchOrFocus("Reminders"),
-    -- e = launchOrFocus("Mail"),
     b = launchOrFocus("Google Chrome"),
     a = launchOrFocus("Activity Monitor"),
     c = launchOrFocus("Pixie"),
-    d = launchOrFocus("Quartz Debug"),
-    i = launchOrFocus("Simple Text"),
   },
 
   [{ "alt", "ctrl" }] = {

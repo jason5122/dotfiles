@@ -1,14 +1,16 @@
 [user]
 	name = Jason Han
 	email = jason.han@columbia.edu
-[init]
-	defaultBranch = main
 [core]
 	untrackedCache = true
 [push]
 	autoSetupRemote = true
+[worktree]
+	useRelativePaths = true
 [log]
 	date = local
+[advice]
+	defaultBranchName = false
 [alias]
 	changelog = log @{1}..
 	when-added = log --follow --diff-filter=A --find-renames=40%

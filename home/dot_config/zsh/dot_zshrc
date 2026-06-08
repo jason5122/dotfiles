@@ -92,7 +92,9 @@ eval "$(nodenv init -)"
 maybe_source "$HOME/google-cloud-sdk/path.zsh.inc"
 maybe_source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
-maybe_source "$ZDOTDIR/functions/android.zsh"
+maybe_source "$ZDOTDIR/functions/git.zsh"
+
+alias claude='claude --model claude-opus-4-8'
 
 # ==================================================================================================
 unfunction maybe_source
