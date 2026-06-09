@@ -47,15 +47,15 @@ local bindings = {
     c = launchOrFocus("Pixie"),
   },
 
-  -- [{ "alt", "ctrl" }] = {
-  --   n = moveFrontmostWindow(grid.leftHalf),
-  --   m = moveFrontmostWindow(grid.rightHalf),
-  --   u = moveFrontmostWindow(grid.leftTopHalf),
-  --   j = moveFrontmostWindow(grid.leftBottomHalf),
-  --   i = moveFrontmostWindow(grid.rightTopHalf),
-  --   k = moveFrontmostWindow(grid.rightBottomHalf),
-  --   ["return"] = moveFrontmostWindow(grid.maximize),
-  -- },
+  [{ "alt", "ctrl" }] = {
+    n = moveFrontmostWindow(grid.leftHalf),
+    m = moveFrontmostWindow(grid.rightHalf),
+    u = moveFrontmostWindow(grid.leftTopHalf),
+    j = moveFrontmostWindow(grid.leftBottomHalf),
+    i = moveFrontmostWindow(grid.rightTopHalf),
+    k = moveFrontmostWindow(grid.rightBottomHalf),
+    ["return"] = moveFrontmostWindow(grid.maximize),
+  },
 }
 for modifier, keyActions in pairs(bindings) do
   for key, action in pairs(keyActions) do
