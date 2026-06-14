@@ -1,15 +1,3 @@
-# # https://stevenvanbael.com/profiling-zsh-startup
-alias zsh_profile='time ZSH_PROFILE_STARTUP=1 zsh -i -c exit'
-if [[ -n ${ZSH_PROFILE_STARTUP:-} ]]; then
-  zmodload zsh/zprof
-  autoload -Uz add-zsh-hook
-  _zprof_dump() {
-    zprof
-  }
-  add-zsh-hook zshexit _zprof_dump
-fi
-
-
 HISTFILE="$ZDOTDIR/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
@@ -19,16 +7,20 @@ setopt EXTENDED_HISTORY
 PROMPT='%F{green}%n%f@%F{blue}%m%f %F{yellow}%(5~|%-1~/…/%3~|%4~)%f
 $ '
 # https://git-scm.com/book/sv/v2/Bilaga-A:-Git-in-Other-Environments-Git-in-Zsh
-autoload -Uz vcs_info
+autoload -Uz add-zsh-hook vcs_info
 precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
+add-zsh-hook precmd precmd_vcs_info
 setopt prompt_subst
-RPROMPT=\$vcs_info_msg_0_
+RPROMPT='$vcs_info_msg_0_'
 zstyle ':vcs_info:git:*' formats '%b'
 
 export VISUAL='subl -w'
 export PAGER=less
-export LESS=-FR
+export LESS=-R
+
+# Preserve our cursor style when exiting tmux or Neovim.
+_set_cursor_bar() { printf '\e[6 q' }
+add-zsh-hook precmd _set_cursor_bar
 
 # ==================================================================================================
 # Completions
@@ -68,16 +60,16 @@ bindkey '^X^E' edit-command-line
 # ==================================================================================================
 # Miscellaneous
 # ==================================================================================================
-function maybe_source { [[ -f $1 ]] && . "$1"; }
-maybe_source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+maybe_source() { [[ -f $1 ]] && . "$1"; }
+oath() { ykman oath accounts code -s "$1"; }
 
-function oath { ykman oath accounts code -s "$1"; }
+maybe_source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
 
 alias cm=chezmoi
 
 # TODO: Document how to download cookies. This command seems to prompt for Keychain Access (doesn't seem to store it though).
 # gallery-dl --cookies-from-browser chromium/instagram.com --cookies-export cookies.txt
-function ig {
+ig() {
   local out="$HOME/Downloads/to-personal-laptop/gallery-dl"
   gallery-dl -C "$out/cookies.txt" -d "$out" "$1"
 }
@@ -87,7 +79,7 @@ function ig {
 # ==================================================================================================
 maybe_source "$HOME/.duolingo/init.sh"
 
-eval "$(nodenv init -)"
+# eval "$(nodenv init -)"
 
 maybe_source "$HOME/google-cloud-sdk/path.zsh.inc"
 maybe_source "$HOME/google-cloud-sdk/completion.zsh.inc"
@@ -98,3 +90,9 @@ alias claude='claude --model claude-opus-4-8'
 
 # ==================================================================================================
 unfunction maybe_source
+
+
+zsh_profile() {
+  local TIMEFMT="%mE"
+  time zsh -i -c exit
+}
