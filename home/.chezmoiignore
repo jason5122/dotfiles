@@ -1,3 +1,8 @@
+{{- if ne .chezmoi.os "darwin" }}
+.hammerspoon
+Library
+{{- end }}
+
 **/.DS_Store
 *.sublime-project
 *.sublime-workspace
@@ -6,9 +11,3 @@
 .config/zsh/.zsh_sessions/
 .config/zsh/.zcompdump
 .config/zsh/.zsh_history
-
-.config/gh/hosts.yml
-
-.ssh/known_hosts*
-.ssh/id_ed25519
-.ssh/aws_ec2.pem
