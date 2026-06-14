@@ -1,12 +1,6 @@
 -- https://github.com/twpayne/dotfiles/blob/master/home/dot_hammerspoon/init.lua
 -- https://github.com/artnc/dotfiles/blob/master/hammerspoon/init.lua
 
--- Auto-reload Hammerspoon config
-hs.alert("Config reloaded")
-_configWatcher = hs.pathwatcher.new("~/.hammerspoon/init.lua", function()
-  hs.reload()
-end):start()
-
 hs.grid.setGrid("4x4")
 hs.grid.setMargins({ 0, 0 })
 -- hs.window.animationDuration = 0
@@ -21,13 +15,13 @@ local grid = {
   maximize = "0,0 4x4",
 }
 
-function launchOrFocus(app)
+local function launchOrFocus(app)
   return function()
     hs.application.launchOrFocus(app)
   end
 end
 
-function moveFrontmostWindow(where)
+local function moveFrontmostWindow(where)
   return function()
     local window = hs.window.frontmostWindow()
     local screen = window:screen()
@@ -59,6 +53,20 @@ local bindings = {
 }
 for modifier, keyActions in pairs(bindings) do
   for key, action in pairs(keyActions) do
-    hs.hotkey.bind(modifier, tostring(key), action)
+    hs.hotkey.bind(modifier, key, action)
   end
 end
+
+-- Hide Ghostty when the last window is closed. This is a pseudo "quit after last window closed",
+-- but without actually quitting. Keeping the app open means new windows open quicker.
+local ghosttyFilter = hs.window.filter.new("Ghostty")
+ghosttyFilter:subscribe(hs.window.filter.windowDestroyed, function()
+  local app = hs.application.get("Ghostty")
+  if app and #app:visibleWindows() == 0 then
+    app:hide()
+  end
+end)
+
+hs.loadSpoon("ReloadConfiguration")
+spoon.ReloadConfiguration:start()
+hs.alert.show("Hammerspoon config loaded")
