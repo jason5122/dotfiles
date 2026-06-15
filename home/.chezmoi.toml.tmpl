@@ -1,0 +1,25 @@
+{{/* References:
+     https://github.com/twpayne/dotfiles/blob/master/home/.chezmoi.toml.tmpl
+     https://github.com/twpayne/chezmoi/discussions/2114#discussioncomment-2887508 */ -}}
+
+
+{{/* Work around unreliable hostname on macOS. */}}
+{{- $hostname := .chezmoi.hostname -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   $hostname = output "scutil" "--get" "LocalHostName" | trim -}}
+{{- end -}}
+
+{{- $personal := eq $hostname "jason-m2-max" -}}
+{{- $work := eq $hostname "jason-macbook-pro" -}}
+{{- $homelab := eq $hostname "jason-homelab" -}}
+
+{{- $email := "jason.han@columbia.edu" -}}
+{{- if or $work $homelab -}}
+{{-   $email = "jason.han@duolingo.com" -}}
+{{- end -}}
+
+[data]
+  personal = {{ $personal }}
+  work = {{ $work }}
+  homelab = {{ $homelab }}
+  email = {{ $email | quote }}

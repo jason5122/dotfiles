@@ -1,6 +1,6 @@
 [user]
 	name = Jason Han
-	email = jason.han@columbia.edu
+	email = {{ .email }}
 [core]
 	untrackedCache = true
 [push]
@@ -12,6 +12,11 @@
 [advice]
 	defaultBranchName = false
 [alias]
-	changelog = log @{1}..
 	when-added = log --follow --diff-filter=A --find-renames=40%
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)%an <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[url "git@github.com:"]
+	insteadOf = https://github.com/
