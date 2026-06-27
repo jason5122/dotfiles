@@ -2,14 +2,10 @@
 
 ## Setup
 
-[One-line binary install](# https://www.chezmoi.io/install/#one-line-binary-install):
+[One-line Chezmoi binary install](https://www.chezmoi.io/install/#one-line-binary-install):
 
 ```bash
 sh -c "$(curl -fsLS https://get.chezmoi.io/lb)" -- init --ssh jason5122
-```
-
-```bash
-chezmoi init --ssh jason5122
 ```
 
 ## Completions
