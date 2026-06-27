@@ -1,0 +1,79 @@
+# https://www.reddit.com/r/Ghostty/comments/1hoi3id/my_perfect_ghostty_tmux_nvim_configuration_on/
+
+command = /bin/zsh -lc "exec tmux new -A -s main"
+
+theme = Mariana
+window-colorspace = display-p3
+
+font-family = Source Code Pro
+font-size = 16
+
+cursor-style = bar
+cursor-style-blink = false
+adjust-cursor-thickness = 3
+
+maximize = true
+confirm-close-surface = false
+resize-overlay = never
+bell-features = no-attention, no-title
+
+
+# Experimental
+custom-shader = ./shaders/cursor_blaze.glsl
+selection-word-chars = " \t'\"│`|:,()[]{}<>$@"
+macos-titlebar-style = tabs
+auto-update-channel = tip
+
+# Make TUIs actually fill the screen (e.g., nvim, tmux).
+window-padding-y = 0
+window-padding-x = 0
+window-padding-balance = true
+window-padding-color = extend-always
+
+
+# ──────────────────────────────────────────────────────────────────────────────────────────────────
+# Keybinds
+# ──────────────────────────────────────────────────────────────────────────────────────────────────
+keybind = super+t=unbind
+keybind = super+enter=unbind
+keybind = super+f=unbind
+
+keybind = super+shift+n=new_tab
+keybind = super+shift+w=close_tab:this
+
+keybind = f1=text:\x0c!!\n
+keybind = f2=text:\x0cgit status\n
+keybind = f3=text:\x0cgit diff\n
+
+# ──────────────────────────────────────────────────────────────────────────────────────────────────
+# tmux
+# ──────────────────────────────────────────────────────────────────────────────────────────────────
+keybind = super+n=esc:n
+keybind = super+w=esc:w
+keybind = super+j=esc:j
+keybind = super+k=esc:k
+keybind = super+digit_1=esc:1
+keybind = super+digit_2=esc:2
+keybind = super+digit_3=esc:3
+keybind = super+digit_4=esc:4
+keybind = super+digit_5=esc:5
+keybind = super+digit_6=esc:6
+keybind = super+digit_7=esc:7
+keybind = super+digit_8=esc:8
+keybind = super+digit_9=esc:9
+keybind = super+1=esc:1
+keybind = super+2=esc:2
+keybind = super+3=esc:3
+keybind = super+4=esc:4
+keybind = super+5=esc:5
+keybind = super+6=esc:6
+keybind = super+7=esc:7
+keybind = super+8=esc:8
+keybind = super+9=esc:9
+
+keybind = super+d=esc:d
+keybind = super+shift+d=esc:D
+keybind = super+[=esc:h
+keybind = super+]=esc:l
+
+keybind = super+ctrl+p=esc:s
